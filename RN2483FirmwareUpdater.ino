@@ -40,7 +40,7 @@
 #elif defined(ARDUINO_ARCH_ESP32) 
 // Serial1 on ESP32 default Serial1 pins are used by SPI Flash
 // can't be used as is without remap, here we'll use free GPIO
-HardwareSerial Serial1(1); // UART Serial1 
+//HardwareSerial Serial1(1); // UART Serial1 
 // On my LOLIN32 board, I'm using this pin connected
 // to RN2483 module, but you can use other, remember
 // that GPIO >33 are input only, so only RN2483 TX pin can use them
@@ -178,10 +178,22 @@ void setup()
     consolePrint("RN2483 V1.0.1");
 #elif defined(HEXFILE_RN2483_103)
     consolePrint("RN2483 V1.0.3");
+#elif defined(HEXFILE_RN2483_104)
+    consolePrint("RN2483 V1.0.4");
+#elif defined(HEXFILE_RN2483_104A)
+    consolePrint("RN2483 V1.0.4A");
+#elif defined(HEXFILE_RN2483_105)
+    consolePrint("RN2483 V1.0.5");
 #elif defined(HEXFILE_RN2903AU_097rc7)
     consolePrint("RN2903 V0.9.7");
 #elif defined(HEXFILE_RN2903_098)
     consolePrint("RN2903 V0.9.8");
+#elif defined(HEXFILE_RN2903_103)
+    consolePrint("RN2903 V1.0.3");
+#elif defined(HEXFILE_RN2903_SA103)
+    consolePrint("RN2903 SA V1.0.3");
+#elif defined(HEXFILE_RN2903_AS923_105)
+    consolePrint("RN2903 AS V1.0.5");
 #else
     consolePrint("Unknown");
 #endif
