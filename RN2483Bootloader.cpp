@@ -43,7 +43,7 @@ bool Sodaq_RN2483Bootloader::getVersionInfo(BootloaderVersionInfo& versionInfo)
     BootloaderRecord response;
     
     if (readBootloaderResponse(response, (uint8_t*)inputBuffer, inputBufferSize) > 0) {
-        memcpy((void*)&versionInfo, inputBuffer, min(sizeof(inputBuffer), sizeof(versionInfo)));
+        memcpy((void*)&versionInfo, inputBuffer,_min(sizeof(inputBuffer), sizeof(versionInfo)));
         
         return true;
     }
@@ -179,8 +179,8 @@ bool Sodaq_RN2483Bootloader::applicationReset(char* deviceResponseBuffer, size_t
         if ((strstr(this->inputBuffer, "RN2483") != NULL) || (strstr(this->inputBuffer, "RN2903") != NULL)) {
             if (deviceResponseBuffer && (size > strlen(this->inputBuffer))) {
                 debugPrintLn("Copying the response to the given buffer.");
-                memcpy(deviceResponseBuffer, this->inputBuffer, min(size, inputBufferSize));
-                deviceResponseBuffer[min(size, inputBufferSize)] = '\0'; // make sure the string is terminated
+                memcpy(deviceResponseBuffer, this->inputBuffer, _min(size, inputBufferSize));
+                deviceResponseBuffer[_min(size, inputBufferSize)] = '\0'; // make sure the string is terminated
             }
 
             return true;
